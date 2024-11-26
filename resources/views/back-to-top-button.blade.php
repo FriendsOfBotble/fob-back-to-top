@@ -2,7 +2,7 @@
     #fob-back2top {
         position: fixed;
         bottom: 0;
-        right: 40px;
+        right: {{ setting('back_to_top_position_right') ?: 40 }}px;
         width: 40px;
         height: 40px;
         z-index: 10000;
@@ -16,35 +16,35 @@
         transition: all 0.5s ease;
         visibility: hidden;
         opacity: 0;
+    }
 
-        svg {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -moz-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            -o-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            color: var(--primary-color);
-            z-index: 10001;
-            font-size: 20px;
-        }
+    #fob-back2top:hover {
+        cursor: pointer;
+        background-color: var(--primary-color);
+    }
 
-        &:hover {
-            cursor: pointer;
-            background-color: var(--primary-color);
+    #fob-back2top:hover svg {
+        color: #ffffff;
+    }
 
-            svg {
-                color: #ffffff;
-            }
-        }
+    #fob-back2top.active {
+        bottom: {{ setting('back_to_top_position_bottom') ?: 90 }}px;
+        visibility: visible;
+        opacity: 1;
+    }
 
-        &.active {
-            bottom: 90px;
-            visibility: visible;
-            opacity: 1;
-        }
+    #fob-back2top svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        -o-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        color: var(--primary-color);
+        z-index: 10001;
+        font-size: 20px;
     }
 </style>
 
